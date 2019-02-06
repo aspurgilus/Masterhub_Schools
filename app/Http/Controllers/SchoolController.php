@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\School;
+use App\Specialization;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -42,7 +43,31 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$attributes = $request->validate([
+			'name' => ['required','min:4'],
+			'city' => ['required','min:2'],
+			'address' => ['required','max:255']
+		]);
+		$attributes['phone'] = $request['phone'];
+		$attributes['owner_id'] = auth()->id();
+		$spec = new Specialization();
+
+		if($request['cosmetology']) {
+			$spec->create(['name' => 'Косметология','school_id' => auth()->id()]);
+		}
+		if($request['manicure']) {
+			$spec->create(['name' => 'Маникюр','school_id' => auth()->id()]);
+		}
+		if($request['pedicure']) {
+			$spec->create(['name' => 'Педикюр','school_id' => auth()->id()]);
+		}
+		if($request['makeup']) {
+			$spec->create(['name' => 'Мейк-ап','school_id' => auth()->id()]);
+		}
+
+		School::create($attributes);
+		flash('Ваша школа успешно добавлена');
+		return redirect('/schools');
     }
 
     /**
