@@ -68,8 +68,8 @@
         text-transform: uppercase;
     }
 
-    .m-b-md {
-        margin-bottom: 30px;
+    #status{
+        margin:0 auto;
     }
 
     .footer{
@@ -78,19 +78,21 @@
 
 </style>
 <body>
-<div id="app">
-    <header>
-        @include('layouts.header')
-    </header>
+    <div id="app">
+        <header>
+            @include('layouts.header')
+        </header>
 
 
-    <main class="py-4">
-        @yield('content')
-    </main>
+        <main class="py-4">
+            @yield('content')
+        </main>
 
-    <footer>
-        @include('layouts.footer')
-    </footer>
-</div>
+        <footer>
+            @include('layouts.footer')
+        </footer>
+    </div>
+
+
 </body>
 </html>

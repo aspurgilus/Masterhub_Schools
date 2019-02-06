@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title','Главная')
 
@@ -7,7 +7,7 @@
 
 
         <div class="content">
-            <div class="title m-b-md">
+            <div class="title mb-3">
                 Masterhub
             </div>
 
