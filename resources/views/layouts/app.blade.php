@@ -101,13 +101,22 @@
     }
 
     main > div{
-        border:1px solid black;
+
         position:relative;
     }
 
     aside{
         float:left;
 
+    }
+    table{
+        padding:20px;
+        text-align:center;
+
+    }
+    table tr,td,th{
+        border:1px solid black;
+        padding:20px;
     }
 
     .footer{

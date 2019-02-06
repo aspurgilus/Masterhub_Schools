@@ -18,6 +18,7 @@ class CreateSpecializationsTable extends Migration
             $table->unsignedInteger('school_id');
             $table->string('name');
             $table->timestamps();
+
         });
     }
 

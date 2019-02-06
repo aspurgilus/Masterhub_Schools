@@ -20,7 +20,8 @@ class SchoolController extends Controller
 
     public function index()
     {
-		$schools = School::all();
+		$schools = School::all()->where('owner_id','=',auth()->id());
+
 		return view('/schools.index',compact('schools'));
     }
 
@@ -43,16 +44,12 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-		$attributes = $request->validate([
-			'name' => ['required','min:4'],
-			'city' => ['required','min:2'],
-			'address' => ['required','max:255']
-		]);
+		$attributes = $this->validateSchool();
 		$attributes['phone'] = $request['phone'];
 		$attributes['owner_id'] = auth()->id();
 		$spec = new Specialization();
 
-		if(empty($request['cosmetology']) or empty($request['manicure']) or empty($request['pedicure']) or empty($request['makeup'])) {
+		if(empty($request['cosmetology']) and empty($request['manicure']) and empty($request['pedicure']) and empty($request['makeup'])) {
 			flash('Вы должны выбрать специализацию');
 			return back();
 		}
@@ -82,7 +79,9 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        //
+		$this->authorize('view',$school);
+
+		return view('/schools.show',compact('school'));
     }
 
     /**
@@ -93,7 +92,8 @@ class SchoolController extends Controller
      */
     public function edit(School $school)
     {
-        //
+		$this->authorize('edit',$school);
+		return view('/schools.edit',compact('school'));
     }
 
     /**
@@ -105,7 +105,10 @@ class SchoolController extends Controller
      */
     public function update(Request $request, School $school)
     {
-        //
+		$this->authorize('update',$school);
+		$school->update($this->validateSchool());
+		flash('Ваша школа была обновлена');
+		return redirect('/schools');
     }
 
     /**
@@ -116,6 +119,16 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        //
+		$this->authorize('delete',$school);
+		$school->delete();
+		flash('Ваша школа была удалена');
+		return redirect('/schools');
     }
+
+	public function validateSchool() {
+		return \request()->validate([
+			'name' => ['required','min:4'],
+			'city' => ['required','min:2'],
+			'address' => ['required','max:255']]);
+	}
 }
