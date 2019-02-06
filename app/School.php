@@ -12,4 +12,9 @@ class School extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
+
+	public function specializations()
+	{
+		return $this->hasMany(Specialization::class);
+	}
 }
