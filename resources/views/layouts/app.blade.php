@@ -120,6 +120,31 @@
         font-size:0.7rem;
         color:red;
     }
+    .buttonEdit{
+        display:inline-block;
+        line-height:20px;
+        padding:5px;
+        background-color:#4aa0e6;
+        color:white;
+        border-radius:10px;
+        margin-left:-20px;
+    }
+    .buttonEdit:hover{
+        background-color:green;
+        color:white;
+        text-decoration:none;
+    }
+    .btndel{
+        margin-left:-20px;
+        border-radius:10px;
+    }
+    .btndel:hover{
+        background-color:red;
+        color:white;
+    }
+    .formdel{
+        margin-top:-20px;
+    }
 
 </style>
 <body>

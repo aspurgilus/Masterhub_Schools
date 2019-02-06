@@ -52,6 +52,10 @@ class SchoolController extends Controller
 		$attributes['owner_id'] = auth()->id();
 		$spec = new Specialization();
 
+		if(empty($request['cosmetology']) or empty($request['manicure']) or empty($request['pedicure']) or empty($request['makeup'])) {
+			flash('Вы должны выбрать специализацию');
+			return back();
+		}
 		if($request['cosmetology']) {
 			$spec->create(['name' => 'Косметология','school_id' => auth()->id()]);
 		}

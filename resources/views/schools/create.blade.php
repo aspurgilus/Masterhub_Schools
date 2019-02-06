@@ -6,6 +6,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if(session('message'))
+                    <p>{{session('message')}}</p>
+                @endif
                 <div class="card">
                     <div class="card-header">Заполните следующие поля</div>
 
