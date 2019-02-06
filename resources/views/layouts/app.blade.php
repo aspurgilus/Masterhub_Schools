@@ -57,6 +57,11 @@
     .title {
         font-size: 84px;
     }
+    h1{
+        font-weight:bold;
+        font-family:'Nunito',sans-serif;
+        font-size:30px;
+    }
 
     .links a {
         color: #636b6f;
@@ -67,22 +72,53 @@
         text-decoration: none;
         text-transform: uppercase;
     }
+    .link{
+        position:absolute;
+        top:30px;
+        right:400px;
+        display:inline-block;
+        width: 200px;
+        margin-left:60%;
+        color:white;
+        background-color:#4aa0e6;
+        padding:10px;
+        border-radius:5px;
+        font-family: Fira Sans,sans-serif;
+        font-style: normal;
+        text-align:center;
+        line-height: 25px;
+        font-size: 15px;
+
+    }
+    .link:hover{
+        background-color:green;
+        color:white;
+        text-decoration:none;
+    }
 
     #status{
         margin:0 auto;
     }
 
+    main > div{
+        border:1px solid black;
+        position:relative;
+    }
+
     aside{
         float:left;
+
     }
-    main{
-        float:right;
-    }
+
     .footer{
         text-align:center;
     }
     .clearfix{
         clear:both;
+    }
+    .hint{
+        font-size:0.7rem;
+        color:red;
     }
 
 </style>
@@ -92,13 +128,17 @@
             @include('layouts.header')
         </header>
 
-        <main class="py-4 col-md-10">
-            @yield('content')
-        </main>
+        <main>
+              <div class="py-4 {{auth()->user() ? 'col-md-10' :''}}" {{auth()->user() ? ' style=float:right':''}} >
 
+            @yield('content')
+              </div>
+        </main>
+        @if (auth()->user())
         <aside class="col-md-2">
             @include('layouts.aside')
         </aside>
+        @endif
 
         <div class="clearfix"></div>
         <footer>
