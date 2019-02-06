@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+    	session(['status' => 'Вы успешно авторизованы']);
+    	return view('home');
     }
 }

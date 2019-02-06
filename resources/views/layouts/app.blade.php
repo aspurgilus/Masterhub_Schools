@@ -72,8 +72,17 @@
         margin:0 auto;
     }
 
+    aside{
+        float:left;
+    }
+    main{
+        float:right;
+    }
     .footer{
         text-align:center;
+    }
+    .clearfix{
+        clear:both;
     }
 
 </style>
@@ -83,11 +92,15 @@
             @include('layouts.header')
         </header>
 
-
-        <main class="py-4">
+        <main class="py-4 col-md-10">
             @yield('content')
         </main>
 
+        <aside class="col-md-2">
+            @include('layouts.aside')
+        </aside>
+
+        <div class="clearfix"></div>
         <footer>
             @include('layouts.footer')
         </footer>
