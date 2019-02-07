@@ -100,6 +100,10 @@
         text-decoration:none;
     }
 
+    .selectform{
+        margin:0 auto;
+    }
+
     #status{
         margin:0 auto;
     }

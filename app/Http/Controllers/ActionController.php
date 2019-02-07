@@ -79,6 +79,7 @@ class ActionController extends Controller
     public function edit(Action $action)
     {
 		$this->authorize('edit',$action);
+		return view('/actions.edit',compact('action'));
     }
 
     /**
@@ -91,6 +92,9 @@ class ActionController extends Controller
     public function update(Request $request, Action $action)
     {
 		$this->authorize('update',$action);
+		$action->update($this->validateAction());
+		flash('Ваше мероприятие было обновлено');
+		return redirect('/actions');
     }
 
     /**
@@ -102,6 +106,9 @@ class ActionController extends Controller
     public function destroy(Action $action)
     {
 		$this->authorize('delete',$action);
+		$action->delete();
+		flash('Ваше мероприятие было удалено');
+		return redirect('/actions');
     }
 
 	public function validateAction() {

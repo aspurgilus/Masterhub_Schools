@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <select class="custom-select-lg" name="schoolname" required>
+                                <select class="custom-select-lg selectform" name="schoolname" required>
                                     <option selected disabled>Выберите школу-организатор</option>
                                     @foreach($schools as $school)
                                         <option value="{{$school->name}}">{{$school->name}}</option>

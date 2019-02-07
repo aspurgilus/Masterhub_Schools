@@ -19,7 +19,7 @@ class ActionPolicy
      */
     public function view(User $user, Action $action)
     {
-        return $action->school()->owner_id == $user->id;
+        return $action->school->owner_id == $user->id;
     }
 
     /**
@@ -42,7 +42,7 @@ class ActionPolicy
      */
     public function update(User $user, Action $action)
     {
-		return $action->school()->owner_id == $user->id;
+		return $action->school->owner_id == $user->id;
     }
 
     /**
@@ -54,7 +54,7 @@ class ActionPolicy
      */
     public function delete(User $user, Action $action)
     {
-		return $action->school()->owner_id == $user->id;
+		return $action->school->owner_id == $user->id;
     }
 
     /**
@@ -66,7 +66,7 @@ class ActionPolicy
      */
     public function restore(User $user, Action $action)
     {
-		return $action->school()->owner_id == $user->id;
+		return $action->school->owner_id == $user->id;
     }
 
     /**
@@ -78,11 +78,11 @@ class ActionPolicy
      */
     public function forceDelete(User $user, Action $action)
     {
-		return $action->school()->owner_id == $user->id;
+		return $action->school->owner_id == $user->id;
     }
 
 	public function edit(User $user, Action $action)
 	{
-		return $action->school()->owner_id == $user->id;
+		return $action->school->owner_id == $user->id;
 	}
 }
