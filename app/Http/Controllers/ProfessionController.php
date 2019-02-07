@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
+use App\Profession;
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class ProfessionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
     public function index()
     {
         //
@@ -47,10 +41,10 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Profession  $profession
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Profession $profession)
     {
         //
     }
@@ -58,10 +52,10 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Profession  $profession
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(Profession $profession)
     {
         //
     }
@@ -70,10 +64,10 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
+     * @param  \App\Profession  $profession
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, Profession $profession)
     {
         //
     }
@@ -81,10 +75,10 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Profession  $profession
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Profession $profession)
     {
         //
     }

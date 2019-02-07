@@ -24,3 +24,5 @@ Route::resource('/schools','SchoolController');
 Route::resource('/actions','ActionController');
 
 Route::resource('/courses','CourseController');
+
+Route::resource('/teachers','TeacherController');
