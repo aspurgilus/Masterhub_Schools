@@ -21,4 +21,8 @@ class School extends Model
 	{
 		return $this->hasMany(Action::class);
 	}
+	public function courses()
+	{
+		return $this->hasMany(Course::class);
+	}
 }

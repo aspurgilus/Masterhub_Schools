@@ -79,7 +79,7 @@ class ActionController extends Controller
     public function edit(Action $action)
     {
 		$this->authorize('edit',$action);
-		return view('/actions.edit',compact('action'));
+		return view('/actions.edit',compact('action','schools'));
     }
 
     /**
