@@ -48,25 +48,26 @@ class SchoolController extends Controller
 		$attributes['phone'] = $request['phone'];
 		$attributes['owner_id'] = auth()->id();
 		$spec = new Specialization();
+		School::create($attributes);
 
 		if(empty($request['cosmetology']) and empty($request['manicure']) and empty($request['pedicure']) and empty($request['makeup'])) {
 			flash('Вы должны выбрать специализацию');
 			return back();
 		}
 		if($request['cosmetology']) {
-			$spec->create(['name' => 'Косметология','school_id' => auth()->id()]);
+			$spec->create(['name' => 'Косметология','school_id' => School::all()->last()->id]);
 		}
 		if($request['manicure']) {
-			$spec->create(['name' => 'Маникюр','school_id' => auth()->id()]);
+			$spec->create(['name' => 'Маникюр','school_id' => School::all()->last()->id]);
 		}
 		if($request['pedicure']) {
-			$spec->create(['name' => 'Педикюр','school_id' => auth()->id()]);
+			$spec->create(['name' => 'Педикюр','school_id' => School::all()->last()->id]);
 		}
 		if($request['makeup']) {
-			$spec->create(['name' => 'Мейк-ап','school_id' => auth()->id()]);
+			$spec->create(['name' => 'Мейк-ап','school_id' => School::all()->last()->id]);
 		}
 
-		School::create($attributes);
+
 		flash('Ваша школа успешно добавлена');
 		return redirect('/schools');
     }
