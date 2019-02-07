@@ -19,6 +19,8 @@ class CreateSpecializationsTable extends Migration
             $table->string('name');
             $table->timestamps();
 
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
+
         });
     }
 
