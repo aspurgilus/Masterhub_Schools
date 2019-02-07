@@ -17,4 +17,8 @@ class School extends Model
 	{
 		return $this->hasMany(Specialization::class);
 	}
+	public function actions()
+	{
+		return $this->hasMany(Action::class);
+	}
 }

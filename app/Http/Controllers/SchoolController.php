@@ -20,9 +20,8 @@ class SchoolController extends Controller
 
     public function index()
     {
-		$schools = School::all()->where('owner_id','=',auth()->id());
-
-		return view('/schools.index',compact('schools'));
+		$schools = School::all()->where('owner_id', '=', auth()->id());
+		return view('/schools.index', compact('schools'));
     }
 
     /**
@@ -32,8 +31,7 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        $schools = auth()->user()->schools;
-        return view('schools.create');
+    	return view('schools.create');
     }
 
     /**

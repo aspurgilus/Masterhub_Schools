@@ -62,6 +62,10 @@
         font-family:'Nunito',sans-serif;
         font-size:30px;
     }
+    .span{
+        font-weight:bold;
+        font-style:italic;
+    }
 
     .links a {
         color: #636b6f;
