@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\School;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -20,7 +21,13 @@ class CourseController extends Controller
 
     public function index()
     {
-        //
+
+		$schools = Course::all()->pluck('school')->where('owner_id', '=', auth()->id());
+		$courses = [];
+		foreach($schools as $school) {
+			$courses[] = $school->courses;
+		}
+		return view('/courses.index', compact('courses'));
     }
 
     /**

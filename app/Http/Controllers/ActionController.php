@@ -20,13 +20,11 @@ class ActionController extends Controller
 
     public function index()
     {
-		$schools = School::all()->where('owner_id','=',auth()->id());
+		$schools = Action::all()->pluck('school')->where('owner_id', '=', auth()->id());
 		$actions = [];
 		foreach($schools as $school) {
-			$actions[] = Action::all()->where('school_id','=',$school->id);
+			$actions[] = $school->actions;
 		}
-		//dd($actions);
-		//$actions = Action::all()->where(Action::school()->owner_id, '=', auth()->id());
 		return view('/actions.index', compact('actions'));
 	}
 
